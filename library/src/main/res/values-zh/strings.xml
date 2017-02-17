@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FlexibleRichTextView</string>
+    <string name="collapse">收起  ↑</string>
+    <string name="expand">展开  ↓</string>
+</resources>
