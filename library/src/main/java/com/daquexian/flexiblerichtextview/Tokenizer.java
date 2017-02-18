@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  * Created by daquexian on 17-2-9.
  */
 
-public class Parser4 {
+public class Tokenizer {
     private static List<String> colorStartLabels = new ArrayList<>();
     private static List<String> colorEndLabels = new ArrayList<>();
     private static List<String> urlStartLabels = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Parser4 {
     private static List<ImgPos> imgPosList = new ArrayList<>();
     private static List<QuotePos> quotePosList = new ArrayList<>();
 
-    private static final String TAG = "SFXParser3";
+    private static final String TAG = "Tokenizer";
 
     private static List<String> iconStrs = new ArrayList<>();
     private static List<Integer> icons = new ArrayList<>();
@@ -693,13 +693,13 @@ public class Parser4 {
     }
 
     public static void setIconStrs(String... iconStrs) {
-        Parser4.iconStrs = new ArrayList<>();
-        Collections.addAll(Parser4.iconStrs, iconStrs);
+        Tokenizer.iconStrs = new ArrayList<>();
+        Collections.addAll(Tokenizer.iconStrs, iconStrs);
     }
 
     public static void setIcons(Integer... icons) {
-        Parser4.icons = new ArrayList<>();
-        Collections.addAll(Parser4.icons, icons);
+        Tokenizer.icons = new ArrayList<>();
+        Collections.addAll(Tokenizer.icons, icons);
     }
 
 
