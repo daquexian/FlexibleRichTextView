@@ -99,3 +99,6 @@ The root element of layout must be a `QuoteView` and the first child of it must 
 In interface `FlexibleRichTextView.OnViewClickListener`, three callbacks are declared, including `OnImgClick(ImageView imageView)`, `OnAttClick(Attachment attachment)` and `OnQuoteButtonClick(View view, boolean collapsed)`.
 
 For attachments, if an attachment is shown as image, `OnImgClick` will be called when clicking the attachment, `OnAttClick` is only called when an attachment shown as link is clicked.
+
+## Lisence
+This library is licensed under Apache 2.0. The full license text can be found in the [LICENSE](https://github.com/daquexian/FlexibleRichTextView/blob/master/LICENSE) file.
