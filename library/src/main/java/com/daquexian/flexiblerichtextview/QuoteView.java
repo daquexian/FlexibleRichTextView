@@ -32,7 +32,7 @@ public class QuoteView extends LinearLayout {
     int mTextViewHeight = -1;
     final int HEIGHT_THRESHOLD = 10;
 
-    List<Parser4.TOKEN> mTokens;
+    List<Tokenizer.TOKEN> mTokens;
 
     private static final String TAG = "QuoteView";
 
@@ -115,7 +115,7 @@ public class QuoteView extends LinearLayout {
         });
     }
 
-    public void setTokens(final List<Parser4.TOKEN> tokens) {
+    public void setTokens(final List<Tokenizer.TOKEN> tokens) {
         post(new Runnable() {
             @Override
             public void run() {
@@ -130,7 +130,7 @@ public class QuoteView extends LinearLayout {
                         }
                     }
                 });
-                mTextView.setText(Parser4.TOKEN.getString(tokens));
+                mTextView.setText(Tokenizer.TOKEN.getString(tokens));
                 mTextView.setMaxLines(3);
                 mTextView.setEllipsize(TextUtils.TruncateAt.END);
                 mTextView.post(new Runnable() {

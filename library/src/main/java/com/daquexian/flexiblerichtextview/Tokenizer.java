@@ -12,8 +12,10 @@ import java.util.regex.Pattern;
 
 /**
  * Created by daquexian on 17-2-9.
+ * The tokenizer
  */
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Tokenizer {
     private static List<String> colorStartLabels = new ArrayList<>();
     private static List<String> colorEndLabels = new ArrayList<>();
@@ -344,8 +346,6 @@ public class Tokenizer {
     private static final Pattern IMG_REG = Pattern.compile("(?i)\\[img(=\\d+)?](.*?)\\[/img]");
 
     private static final Pattern TABLE_REG = Pattern.compile("(?:\\n|^)( *\\|.+\\| *\\n)??( *\\|(?: *:?----*:? *\\|)+ *\\n)((?: *\\|.+\\| *(?:\\n|$))+)");
-
-    private static List<TOKEN> mTokenList = new ArrayList<>();
 
     public static int setUrlStartLabel(String... labels) {
         int ret = labels.length;
@@ -756,7 +756,7 @@ public class Tokenizer {
 
     public static List<TOKEN> tokenizer(CharSequence text, List<Attachment> attachmentList) {
 
-        mTokenList = new ArrayList<>();
+        List<TOKEN> tokenList = new ArrayList<>();
 
         Pattern pattern;
         Matcher matcher;
@@ -767,7 +767,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new COLOR_START(matcher.start(), matcher.group(), matcher.group(1)));
+                tokenList.add(new COLOR_START(matcher.start(), matcher.group(), matcher.group(1)));
             }
         }
 
@@ -780,7 +780,7 @@ public class Tokenizer {
                 if (!url.startsWith("http://") && !url.startsWith("https://")) {
                     url = "http://" + url;
                 }
-                mTokenList.add(new URL_START(matcher.start(), url, matcher.group()));
+                tokenList.add(new URL_START(matcher.start(), url, matcher.group()));
 
             }
 
@@ -792,7 +792,7 @@ public class Tokenizer {
 
 
             while (matcher.find()) {
-                mTokenList.add(new URL_END(matcher.start(), matcher.group()));
+                tokenList.add(new URL_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -802,7 +802,7 @@ public class Tokenizer {
 
 
             while (matcher.find()) {
-                mTokenList.add(new CENTER_START(matcher.start(), matcher.group()));
+                tokenList.add(new CENTER_START(matcher.start(), matcher.group()));
 
             }
         }
@@ -812,7 +812,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new CENTER_END(matcher.start(), matcher.group()));
+                tokenList.add(new CENTER_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -821,7 +821,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new CURTAIN_START(matcher.start(), matcher.group()));
+                tokenList.add(new CURTAIN_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -830,7 +830,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new CURTAIN_END(matcher.start(), matcher.group()));
+                tokenList.add(new CURTAIN_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -843,7 +843,7 @@ public class Tokenizer {
                 if (attachmentList != null) {
                     for (Attachment attachment : attachmentList) {
                         if (attachment.getAttachmentId().equals(id)) {
-                            mTokenList.add(new ATTACHMENT(matcher.start(), attachment, matcher.group()));
+                            tokenList.add(new ATTACHMENT(matcher.start(), attachment, matcher.group()));
                             break;
                         }
                     }
@@ -856,7 +856,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new COLOR_END(matcher.start(), matcher.group()));
+                tokenList.add(new COLOR_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -865,7 +865,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new ITALIC_START(matcher.start(), matcher.group()));
+                tokenList.add(new ITALIC_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -874,7 +874,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new ITALIC_END(matcher.start(), matcher.group()));
+                tokenList.add(new ITALIC_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -883,7 +883,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new BOLD_START(matcher.start(), matcher.group()));
+                tokenList.add(new BOLD_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -892,7 +892,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new BOLD_END(matcher.start(), matcher.group()));
+                tokenList.add(new BOLD_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -901,7 +901,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new DELETE_START(matcher.start(), matcher.group()));
+                tokenList.add(new DELETE_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -910,7 +910,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new DELETE_END(matcher.start(), matcher.group()));
+                tokenList.add(new DELETE_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -919,7 +919,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new UNDERLINE_START(matcher.start(), matcher.group()));
+                tokenList.add(new UNDERLINE_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -928,7 +928,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new UNDERLINE_END(matcher.start(), matcher.group()));
+                tokenList.add(new UNDERLINE_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -937,7 +937,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new TITLE_START(matcher.start(), matcher.group()));
+                tokenList.add(new TITLE_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -946,7 +946,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new TITLE_END(matcher.start(), matcher.group()));
+                tokenList.add(new TITLE_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -955,7 +955,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new CODE_START(matcher.start(), matcher.group()));
+                tokenList.add(new CODE_START(matcher.start(), matcher.group()));
             }
         }
 
@@ -964,7 +964,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new CODE_END(matcher.start(), matcher.group()));
+                tokenList.add(new CODE_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -976,13 +976,13 @@ public class Tokenizer {
 
             while (matcher.find()) {
                 if (quotePos.postIdPos == -1 && quotePos.memberPos == -1) {
-                    mTokenList.add(new QUOTE_START(matcher.start(), matcher.group(), "", ""));
+                    tokenList.add(new QUOTE_START(matcher.start(), matcher.group(), "", ""));
                 } else if (quotePos.postIdPos == -1) {
-                    mTokenList.add(new QUOTE_START(matcher.start(), matcher.group(), matcher.group(1), ""));
+                    tokenList.add(new QUOTE_START(matcher.start(), matcher.group(), matcher.group(1), ""));
                 } else if (quotePos.memberPos == -1) {
-                    mTokenList.add(new QUOTE_START(matcher.start(), matcher.group(), "", matcher.group(1)));
+                    tokenList.add(new QUOTE_START(matcher.start(), matcher.group(), "", matcher.group(1)));
                 } else {
-                    mTokenList.add(new QUOTE_START(matcher.start(), matcher.group(), matcher.group(quotePos.memberPos), matcher.group(quotePos.postIdPos)));
+                    tokenList.add(new QUOTE_START(matcher.start(), matcher.group(), matcher.group(quotePos.memberPos), matcher.group(quotePos.postIdPos)));
                 }
             }
         }
@@ -992,7 +992,7 @@ public class Tokenizer {
             matcher = pattern.matcher(text);
 
             while (matcher.find()) {
-                mTokenList.add(new QUOTE_END(matcher.start(), matcher.group()));
+                tokenList.add(new QUOTE_END(matcher.start(), matcher.group()));
             }
         }
 
@@ -1008,7 +1008,7 @@ public class Tokenizer {
                 if (iconStr.equals("/^^")) Log.d(TAG, "parse: " + str.trim().length() + ", " + iconStr.length() + ", " + (from + iconStr.length()) + ", " + str.length());
                 if (str.trim().length() == iconStr.length() ||
                         ((from == 0 || ' ' == str.charAt(from - 1)) && (from + iconStr.length() == str.length() || ' ' == str.charAt(from + iconStr.length()) || '\n' == str.charAt(from + iconStr.length())))) {
-                    mTokenList.add(new ICON(from, iconStr, icons.get(i)));
+                    tokenList.add(new ICON(from, iconStr, icons.get(i)));
                 }
                 from += iconStr.length();
             }
@@ -1022,13 +1022,13 @@ public class Tokenizer {
 
             while (matcher.find()) {
                 if (imgPos.heightPos == -1 && imgPos.widthPos == -1) {
-                    mTokenList.add(new IMAGE(matcher.start(), matcher.group(1), matcher.group()));
+                    tokenList.add(new IMAGE(matcher.start(), matcher.group(1), matcher.group()));
                 } else if (imgPos.heightPos == -1) {
-                    mTokenList.add(new IMAGE(matcher.start(), matcher.group(imgPos.urlPos), matcher.group(), Integer.valueOf(matcher.group(imgPos.widthPos)), -1));
+                    tokenList.add(new IMAGE(matcher.start(), matcher.group(imgPos.urlPos), matcher.group(), Integer.valueOf(matcher.group(imgPos.widthPos)), -1));
                 } else if (imgPos.widthPos == -1) {
-                    mTokenList.add(new IMAGE(matcher.start(), matcher.group(imgPos.urlPos), matcher.group(), -1, Integer.valueOf(matcher.group(imgPos.heightPos))));
+                    tokenList.add(new IMAGE(matcher.start(), matcher.group(imgPos.urlPos), matcher.group(), -1, Integer.valueOf(matcher.group(imgPos.heightPos))));
                 } else {
-                    mTokenList.add(new IMAGE(matcher.start(), matcher.group(imgPos.urlPos), matcher.group(), Integer.valueOf(matcher.group(imgPos.widthPos)), Integer.valueOf(matcher.group(imgPos.heightPos))));
+                    tokenList.add(new IMAGE(matcher.start(), matcher.group(imgPos.urlPos), matcher.group(), Integer.valueOf(matcher.group(imgPos.widthPos)), Integer.valueOf(matcher.group(imgPos.heightPos))));
                 }
             }
         }
@@ -1037,7 +1037,7 @@ public class Tokenizer {
         matcher = pattern.matcher(text);
 
         while (matcher.find()) {
-            mTokenList.add(new TABLE(matcher.start(), matcher.group()));
+            tokenList.add(new TABLE(matcher.start(), matcher.group()));
         }
 
 
@@ -1061,45 +1061,45 @@ public class Tokenizer {
 
                 contentStart = matcher.start(index);
 
-                mTokenList.add(new FORMULA(start, content, contentStart - start, value));
+                tokenList.add(new FORMULA(start, content, contentStart - start, value));
             }
         }
 
-        Collections.sort(mTokenList);
+        Collections.sort(tokenList);
 
-        for (int i = 0; i < mTokenList.size(); i++) {
-            TOKEN token = mTokenList.get(i);
+        for (int i = 0; i < tokenList.size(); i++) {
+            TOKEN token = tokenList.get(i);
 
             if (token instanceof TABLE) {
-                for (int j = 0; j < mTokenList.size(); j++) {
-                    TOKEN token1 = mTokenList.get(j);
+                for (int j = 0; j < tokenList.size(); j++) {
+                    TOKEN token1 = tokenList.get(j);
 
                     if (token1.position >= token.position + token.length) {
                         break;
                     }
 
                     if (token1.position > token.position) {
-                        mTokenList.remove(j);
+                        tokenList.remove(j);
                         j--;
                     }
                 }
             }
         }
 
-        mTokenList.add(new END(text.length()));
-        removeOverlappingTokens(mTokenList);
+        tokenList.add(new END(text.length()));
+        removeOverlappingTokens(tokenList);
 
         start = 0;
-        for (int i = 0; i < mTokenList.size(); i++) {
-            TOKEN token = mTokenList.get(i);
+        for (int i = 0; i < tokenList.size(); i++) {
+            TOKEN token = tokenList.get(i);
             if (token.position > start) {
-                mTokenList.add(i, new PLAIN(start, text.subSequence(start, token.position)));
+                tokenList.add(i, new PLAIN(start, text.subSequence(start, token.position)));
                 i++;
             }
             start = token.position + token.length;
         }
 
-        return mTokenList;
+        return tokenList;
     }
 
     /**

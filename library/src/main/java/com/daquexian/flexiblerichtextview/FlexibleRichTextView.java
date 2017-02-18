@@ -47,15 +47,13 @@ import java.util.regex.Pattern;
 
 import io.github.kbiakov.codeview.CodeView;
 
-import static com.daquexian.flexiblerichtextview.Parser4.*;
+import static com.daquexian.flexiblerichtextview.Tokenizer.*;
 
 /**
- * 包含QuoteView和OnlineImgTextView
- * 用于显示帖子
  * Created by jianhao on 16-8-26.
  */
 public class FlexibleRichTextView extends LinearLayout {
-    private final static String TAG = "PostContentView";
+    private final static String TAG = "FlexibleRichTextView";
     static final int MAX_IMAGE_WIDTH = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.8);
 
     private Context mContext;
@@ -64,7 +62,7 @@ public class FlexibleRichTextView extends LinearLayout {
     private List<Attachment> mAttachmentList;
     private OnViewClickListener mOnViewClickListener;
 
-    private List<Parser4.TOKEN> mTokenList;
+    private List<Tokenizer.TOKEN> mTokenList;
     private int mTokenIndex;
 
     private boolean mCenter;
@@ -384,7 +382,6 @@ public class FlexibleRichTextView extends LinearLayout {
             builder.setSpan(new ClickableSpan() {
                 @Override
                 public void onClick(View view) {
-                    //MyUtils.downloadAttachment(mContext, attachment);
                     mOnViewClickListener.onAttClick(attachment);
                 }
             }, 0, attachment.getText().length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
