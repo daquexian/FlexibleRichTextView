@@ -73,7 +73,7 @@ For example, if you customize image label as `<img height=\h width=\w>\u</img>`,
 This library support attachment. If there are attachments to show, create a class and inherit abstract class `Attachment`, then invoke `flexibleRichTextView.setText(String richText, List<Attachment> attachments)`.
 
 
-If `attachment.isImage()` is true, the attachment will be shown as image, or it will be shown as a link (please implement `getText()` method and return the link text, see [Callbacks](#callbacks) for more information). Both images and links produced from attachments will be shown at the bottom of view.
+If `attachment.isImage()` is true, the attachment will be shown as image, or it will be shown as a link (please implement `getText()` method whose return value is the link text, and `getUrl()` method whose return value is the url of image, see [Callbacks](#callbacks) for more information). Both images and links produced from attachments will be shown at the bottom of view.
 
 If you need the attachment embedded in text, please implement `getAttachmentId()` method and provide the id in attachment tag.
 
@@ -94,6 +94,12 @@ You can not only customize the tags of `quote`, but also the layout of `QuoteVie
 The default layout is [this](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/res/layout/quote_view.xml).
 
 The root element of layout must be a `QuoteView` and the first child of it must be a `FrameLayout`. You can specify a button that takes the role of expanding or collapsing the QuoteView on click by adding `app:buttonId=your_button_id` in QuoteView. When the button is clicked, the `onButtonClick(View view, boolean collapsed)` method of `OnViewListener` will be invoked, you could modify the text of button or do other things according to the status of `QuoteView`.
+
+## LaTeX
+See [this](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/java/com/daquexian/flexiblerichtextview/Tokenizer.java#L339) for LaTeX tags. They cannot be customized temporarily.
+
+## Table
+The grammer for table is the same as [GitHub](https://help.github.com/articles/organizing-information-with-tables/), except for the pipes on either end of the table cannot be omitted.
 
 ## Callbacks
 In interface `FlexibleRichTextView.OnViewClickListener`, three callbacks are declared, including `OnImgClick(ImageView imageView)`, `OnAttClick(Attachment attachment)` and `OnQuoteButtonClick(View view, boolean collapsed)`.
