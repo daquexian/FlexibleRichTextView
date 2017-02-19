@@ -91,7 +91,7 @@ If the list `attachmentList` contains an attachment whose id equals `3918dbe1ac`
 
 You can not only customize the tags of `quote`, but also the layout of `QuoteView`.
 
-The default layout is [this](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/res/layout/quote_view.xml).
+The default layout is [this](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/res/layout/default_quote_view.xml).
 
 The root element of layout must be a `QuoteView` and the first child of it must be a `FrameLayout`. You can specify a button that takes the role of expanding or collapsing the QuoteView on click by adding `app:buttonId=your_button_id` in QuoteView. When the button is clicked, the `onButtonClick(View view, boolean collapsed)` method of `OnViewListener` will be invoked, you could modify the text of button or do other things according to the status of `QuoteView`.
 
