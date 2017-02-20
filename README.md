@@ -1,5 +1,7 @@
 # FlexibleRichTextView
 
+[中文版](README.zh-cn.md)
+
 ## Description
 This library is used for showing various rich text, including LaTeX, images, codes, tables, and normal styles such as center, bold, italic and so on.
 
@@ -8,6 +10,10 @@ A interesting feature is, you can customize most tags as whatever you want.
 It uses [CodeView](https://github.com/Softwee/codeview-android) to support code highlight, and [JLaTeXMath](https://github.com/mksmbrtsh/jlatexmath-android) (as well as [this fork](https://github.com/sixgodIT/JLaTexMath-andriod)) to support LaTeX.
 
 The method to parse rich text is something like recursively descending. I'm open to PR that could improve performance, fix bugs and anything make this library better.
+
+Screenshot:
+
+![Screenshot](screencap.png)
 
 ## Download
 
