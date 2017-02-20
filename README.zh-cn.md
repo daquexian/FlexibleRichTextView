@@ -55,7 +55,7 @@ flexibleRichTextView.setText(richText);
 
 ## 标签
 
-在 [这里](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/java/com/daquexian/flexiblerichtextview/Parser4.java#L711) 查看默认标签。要自定义标签，请使用 `set***Labels` 方法，如 `setBoldStartLabels("<b>", "[b]")`。
+在 [这里](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/java/com/daquexian/flexiblerichtextview/Tokenizer.java#L711) 查看默认标签。要自定义标签，请使用 `set***Labels` 方法，如 `setBoldStartLabels("<b>", "[b]")`。
 
 在标签中，有一些有特殊含义的字符：
 * 在图片标签中，`\w`代表图片显示的宽度，`\h`代表图片显示的高度（如果不指定则会按照图片的原大小显示），`\u`代表图片的 URL

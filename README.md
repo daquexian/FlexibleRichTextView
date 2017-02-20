@@ -5,7 +5,7 @@
 ## Description
 This library is used for showing various rich text, including LaTeX, images, codes, tables, and normal styles such as center, bold, italic and so on.
 
-A interesting feature is, you can customize most tags as whatever you want.
+An interesting feature is, you can customize most tags as whatever you want.
 
 It uses [CodeView](https://github.com/Softwee/codeview-android) to support code highlight, and [JLaTeXMath](https://github.com/mksmbrtsh/jlatexmath-android) (as well as [this fork](https://github.com/sixgodIT/JLaTexMath-andriod)) to support LaTeX.
 
@@ -60,7 +60,7 @@ flexibleRichTextView.setText(richText);
 
 ## Tags
 
-You can see default tags in [this](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/java/com/daquexian/flexiblerichtextview/Parser4.java#L711). Try to customize your own tags by the series of  `set***Labels(String... labels)` methods.
+You can see default tags in [this](https://github.com/daquexian/FlexibleRichTextView/blob/master/library/src/main/java/com/daquexian/flexiblerichtextview/Tokenizer.java#L711). Try to customize your own tags by the series of  `set***Labels(String... labels)` methods.
 
 * For image labels, `\w` represents width ,`\h` represents height and `\u` represents the url of image.
 
