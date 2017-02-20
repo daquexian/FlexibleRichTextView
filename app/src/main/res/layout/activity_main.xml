@@ -10,8 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.daquexian.flexiblerichtextview.MainActivity">
 
-    <com.daquexian.flexiblerichtextview.FlexibleRichTextView
-        android:id="@+id/frtv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+        <com.daquexian.flexiblerichtextview.FlexibleRichTextView
+            android:id="@+id/frtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
 </RelativeLayout>

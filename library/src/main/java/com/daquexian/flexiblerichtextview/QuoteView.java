@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class QuoteView extends LinearLayout {
     FlexibleRichTextView.OnViewClickListener mOnButtonClickListener;
     List<Attachment> mAttachmentList = new ArrayList<>();
 
+    int mLayoutId;
     int mButtonId;
 
     int mRichTextViewHeight = -1;
@@ -45,6 +48,7 @@ public class QuoteView extends LinearLayout {
         super(context);
         init(context, attachmentList);
     }
+
     public QuoteView(Context context, AttributeSet attributeSet) {
         this(context, attributeSet, 0);
     }
@@ -60,8 +64,13 @@ public class QuoteView extends LinearLayout {
         init(context, null);
     }
 
+    static QuoteView newInstance(ViewGroup parent, int layoutId) {
+        final QuoteView quoteView = (QuoteView) LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
+        quoteView.mLayoutId = layoutId;
+        return quoteView;
+    }
+
     private void collapse(){
-        Log.d(TAG, "collapse() called with: " + "");
         mTextView.setVisibility(VISIBLE);
         mTextView.setText(mTextView.getText()); // without it, textview will show the last three lines
         mTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -107,6 +116,8 @@ public class QuoteView extends LinearLayout {
 
                             if (mOnButtonClickListener != null) {
                                 mOnButtonClickListener.onQuoteButtonClick(mButton, mCollapsed);
+                            } else if (mLayoutId == R.layout.default_quote_view) {
+                                ((Button) mButton).setText(getResources().getString(mCollapsed ? R.string.expand : R.string.collapse));
                             }
                         }
                     });
@@ -154,7 +165,4 @@ public class QuoteView extends LinearLayout {
         mOnButtonClickListener = onButtonClickListener;
     }
 
-    public interface OnButtonClickListener {
-        void onButtonClick(View view, boolean collapsed);
-    }
 }

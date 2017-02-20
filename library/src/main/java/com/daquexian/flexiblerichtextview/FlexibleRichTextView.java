@@ -69,7 +69,7 @@ public class FlexibleRichTextView extends LinearLayout {
 
     private boolean mShowRemainingAtt = true;
 
-    private int mQuoteViewId = R.layout.quote_view;
+    private int mQuoteViewId = R.layout.default_quote_view;
 
     public FlexibleRichTextView(Context context) {
         this(context, null, true);
@@ -347,7 +347,7 @@ public class FlexibleRichTextView extends LinearLayout {
                     }
 
                     if (thisToken() instanceof QUOTE_END) {
-                        final QuoteView quoteView = (QuoteView) LayoutInflater.from(mContext).inflate(mQuoteViewId, this, false);
+                        final QuoteView quoteView = QuoteView.newInstance(this, mQuoteViewId);
                         quoteView.setAttachmentList(mAttachmentList);
                         quoteView.setPadding(0, 8, 0, 8);
                         quoteView.setTokens(tokens);
@@ -382,7 +382,9 @@ public class FlexibleRichTextView extends LinearLayout {
             builder.setSpan(new ClickableSpan() {
                 @Override
                 public void onClick(View view) {
-                    mOnViewClickListener.onAttClick(attachment);
+                    if (mOnViewClickListener != null) {
+                        mOnViewClickListener.onAttClick(attachment);
+                    }
                 }
             }, 0, attachment.getText().length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
             builder.append("\n\n");
@@ -683,7 +685,7 @@ public class FlexibleRichTextView extends LinearLayout {
                     if (cell != null) {
                         cell = cell.replace(SPECIAL_CHAR, "|");
                     }
-                    FlexibleRichTextView flexibleRichTextView = FlexibleRichTextView.newInstance(getContext(), cell, mAttachmentList, mOnViewClickListener, true);
+                    FlexibleRichTextView flexibleRichTextView = FlexibleRichTextView.newInstance(getContext(), cell, mAttachmentList, mOnViewClickListener, false);
                     TableRow.LayoutParams pcvParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
                     switch (margins[j]) {
                         case CENTER:
