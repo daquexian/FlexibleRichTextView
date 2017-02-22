@@ -54,7 +54,7 @@ String richText = "[h][center]hi![/center][/h]" +
                 "[code]print(\"Hello FlexibleRichTextView!\")[/code]" +
                 "Hello FlexibleRichTextView!\n" +
                 "This is LaTeX:\n" +
-                "$e^{\\pi i} - 1 = 0$";
+                "$e^{\\pi i} + 1 = 0$";
 flexibleRichTextView.setText(richText);
 ```
 
