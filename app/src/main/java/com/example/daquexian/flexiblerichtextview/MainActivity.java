@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                         "[code]print(\"Hello FlexibleRichTextView!\")[/code]" +
                         "Hello FlexibleRichTextView!\n" +
                         "This is LaTeX:\n" +
-                        "$e^{\\pi i} - 1 = 0$\n" +
+                        "$e^{\\pi i} + 1 = 0$\n" +
                         "This is table:\n" +
                         "| First Header  | Second Header |\n" +
                         "| --- | --- |\n" +
