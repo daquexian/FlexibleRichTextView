@@ -8,7 +8,7 @@
 
 这个库使用 [CodeView](https://github.com/Softwee/codeview-android) 实现代码高亮，使用 [JLaTeXMath](https://github.com/mksmbrtsh/jlatexmath-android) 以及 [它的这个 fork](https://github.com/sixgodIT/JLaTexMath-andriod) 实现渲染 LaTeX。（见 [issue](https://github.com/daquexian/FlexibleRichTextView/issues/1)）
 
-这个库解析文本的方法类似于递归下降，但不是通过自动机而是直接用正则实现词法分析。欢迎有兴趣的小伙伴一起提交 PR 完善这个库。
+这个库解析文本的方法类似于递归下降，但是是用非常无脑的正则匹配实现词法分析（我准备改成正统的办法，虽然也是正则不过是沿着文本从前往后的那一种）。欢迎有兴趣的小伙伴一起提交 PR 完善这个库。这是我的第一个 Android 库所以有 bug 是在所难免的，如果发现 bug 请提 issue ，我会第一时间研究修复的，蟹蟹 -w-
 
 截图：
 
