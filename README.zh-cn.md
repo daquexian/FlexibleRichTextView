@@ -28,7 +28,7 @@ allprojects {
 ```
 在`app`的 `build.gradle`文件中添加
 ```
-compile 'com.github.daquexian:FlexibleRichTextView:0.8.1'
+compile 'com.github.daquexian:FlexibleRichTextView:0.8.2'
 ```
 
 ## 使用

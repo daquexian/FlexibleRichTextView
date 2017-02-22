@@ -30,7 +30,7 @@ allprojects {
 
 then add
 ````
-compile 'com.github.daquexian:FlexibleRichTextView:0.8.1'
+compile 'com.github.daquexian:FlexibleRichTextView:0.8.2'
 ````
 in your app's `build.gradle`
 
