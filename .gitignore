@@ -31,3 +31,7 @@ pom.xml.*
 #Lint output
 lint-report.html
 lint-report_files/*
+
+#swap files
+*.swp
+*.swo
