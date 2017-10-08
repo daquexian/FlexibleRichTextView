@@ -114,3 +114,8 @@ For attachments, if an attachment is shown as image, `OnImgClick` will be called
 
 ## Lisence
 This library is licensed under Apache 2.0. The full license text can be found in the [LICENSE](https://github.com/daquexian/FlexibleRichTextView/blob/master/LICENSE) file.
+
+### Advertisement
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/HheJ5k484xckBrpik49ftHkY/daquexian/FlexibleRichTextView'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/HheJ5k484xckBrpik49ftHkY/daquexian/FlexibleRichTextView.svg' />
+</a>

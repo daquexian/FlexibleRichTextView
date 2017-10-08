@@ -116,3 +116,8 @@ flexibleRichTextView.setText(textWithAttachment, attachmentList);
 ## 开源协议
 
 本第三方库使用 Apache 2.0 协议，协议全文见 [LICENSE](https://github.com/daquexian/FlexibleRichTextView/blob/master/LICENSE) 文件。
+
+### 坏坏的广告（
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/HheJ5k484xckBrpik49ftHkY/daquexian/FlexibleRichTextView'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/HheJ5k484xckBrpik49ftHkY/daquexian/FlexibleRichTextView.svg' />
+</a>
